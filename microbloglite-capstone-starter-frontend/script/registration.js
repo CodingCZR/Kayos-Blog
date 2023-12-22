@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => response.json())
         .then(data => {
-            // Assuming the API returns a user object with an ID.
+            // 
             alert(`Registration successful for ${data.username}. Please login.`);
-            window.location.href = "login.html"; // Redirect to the login page.
+            window.location.href = "login.html"; //after registration is succesful redirect to login page
         })
         .catch(error => {
             console.error("Registration error:", error);
