@@ -37,13 +37,17 @@
     </header>
 
     <main>
-        <div class="container">
-         <!-- "Riot" button to open the post modal -->
-         <button type="button" class="btn btn-primary" onclick="openPostModal()">Riot</button>
+        <input type="text" id="openModalButton" onclick="openModal()" placeholder="Click me to open the modal">
 
-            <!-- Display posts -->
-            <div id="posts-container" class="mt-4"></div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <label for="modalTextBox">Enter Text:</label>
+                <input type="text" id="modalTextBox">
+                <button onclick="submitModal()">Submit</button>
+            </div>
         </div>
+        
     </main>
 
  <!-- Post Modal -->
@@ -66,6 +70,38 @@
         </div>
     </div>
 </div>
+
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Card title</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Card title</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Card title</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
+
 
     <footer></footer>
 
