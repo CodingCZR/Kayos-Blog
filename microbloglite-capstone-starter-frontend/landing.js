@@ -3,6 +3,7 @@
 "use strict";
 
 let authService
+let loginForm
 
 document.addEventListener("DOMContentLoaded", () => {
     authService = new AuthService()
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.replace("/posts")
     }
 
-    const loginForm = document.querySelector("#login");
+    loginForm = document.querySelector("#login");
     loginForm.addEventListener("submit", login)
 
 })

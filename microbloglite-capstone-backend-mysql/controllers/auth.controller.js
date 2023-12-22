@@ -21,18 +21,26 @@ class AuthController {
           console.log(results)
 
           const user = results[0]
-          if(await bcrypt.compare(password, user.password))
+          try
           {
-            const payload = { username: user.username }
-            const token = jwt.sign(payload, process.env.JWT_SECRET, {
-              expiresIn: "24h"
-            })
+            if(await bcrypt.compare(password, user.password))
+            {
+              const payload = { username: user.username }
+              const token = jwt.sign(payload, process.env.JWT_SECRET, {
+                expiresIn: "24h"
+              })
 
-            response.json({
-              token,
-              username: user.username,
-              statusCode: response.statusCode
-            })
+              response.status(200)
+              response.json({
+                token,
+                username: user.username,
+                statusCode: response.statusCode
+              })
+            }
+          }catch(error)
+          {
+              console.log(error);
+              throw error
           }
         } catch (error) {
           response.status(500).json({
