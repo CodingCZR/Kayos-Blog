@@ -33,10 +33,39 @@
 <body>
 
     <header>
-        <h1>POSTS PAGE</h1>
+        <h1>POSTS PAGE<h1>
     </header>
 
-    <main></main>
+    <main>
+        <div class="container">
+         <!-- "Riot" button to open the post modal -->
+         <button type="button" class="btn btn-primary" onclick="openPostModal()">Riot</button>
+
+            <!-- Display posts -->
+            <div id="posts-container" class="mt-4"></div>
+        </div>
+    </main>
+
+ <!-- Post Modal -->
+ <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="postModalLabel">Write a Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Input field for the tweet content -->
+                <textarea class="form-control" id="postContent" placeholder="What's happening?"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- "Post" button to trigger the postTweet function -->
+                <button type="button" class="btn btn-primary" onclick="postTweet()">Post</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <footer></footer>
 
