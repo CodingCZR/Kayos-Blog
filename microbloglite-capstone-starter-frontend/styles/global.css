@@ -16,3 +16,16 @@
 :root {
     font-size: 1rem;
 }
+
+/* custom CSS to mess with navbar */
+.custom-navbar {
+    padding: 20px; /* Increase the padding to make the navbar taller */
+  }
+
+  .custom-navbar .navbar-brand {
+    font-size: 25px; /* Increase the font size of the navbar brand */
+  }
+
+  .custom-navbar .nav-link {
+    font-size: 18px; /* Increase the font size of the navbar links */
+  }
