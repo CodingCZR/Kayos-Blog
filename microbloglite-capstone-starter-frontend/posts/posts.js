@@ -4,7 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
 // Function to open the post modal
 function openPostModal() {
     $('#postModal').modal('show');
