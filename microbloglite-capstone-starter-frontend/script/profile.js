@@ -1,4 +1,4 @@
-// instance of the AuthService class
+// from auth.js
 const authService = new AuthService();
 
 // function to check if the user is authenticated
