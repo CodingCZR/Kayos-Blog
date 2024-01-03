@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     authService = new AuthService()
 
     if(authService.isLoggedIn()) {
-        window.location.replace("/posts")
+        window.location.replace("posts/index.html")
     }
 
     loginForm = document.querySelector("#login");

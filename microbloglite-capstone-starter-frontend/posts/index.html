@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../global.css">
 
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="./posts.css">
+    <link rel="stylesheet" href="../posts/posts.css">
 
     <title>/POSTS</title>
 
@@ -26,31 +26,54 @@
     <script src="../services/services-base.js"></script>
     <script src="../services/auth-service.js"></script>
     <script src="../services/posts-service.js"></script>
-    <script>
-        if (isLoggedIn() === false) window.location.replace("/");
-    </script>
+    
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg bg-dark custom-navbar" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-3" href="#">KAYOS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home
+                </a>
+                <span class="visually-hidden">(current)</span>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About KAYOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="registration.html">Log-in / Sign-Up</a>
+              </li>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+
 
     <header>
         <h1>POSTS PAGE<h1>
     </header>
 
     <main>
-        <input type="text" id="openModalButton" onclick="openModal()" placeholder="Click me to open the modal">
+        <input type="text" id="openModalButton" placeholder="Click me to open the modal">
 
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
+                <span class="close">&times;</span>
                 <label for="modalTextBox">Enter Text:</label>
                 <input type="text" id="modalTextBox">
                 <button onclick="submitModal()">Submit</button>
             </div>
         </div>
-        
-    </main>
-
- <!-- Post Modal -->
+<!-- Post Modal -->
  <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -65,44 +88,28 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <!-- "Post" button to trigger the postTweet function -->
-                <button type="button" class="btn btn-primary" onclick="postTweet()">Post</button>
+                <button type="button" class="btn btn-primary" onclick="createNewPost()">Post</button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card">
+<div class="card" id = "postsContainer">
     <div class="card-body">
-      <h4 class="card-title">Card title</h4>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <h6 class="card-subtitle mb-2 text-muted">Username</h6>
+      <p class="card-text"> The body of the blog.</p>
+      <a href="../profile.html" class="card-link">User Profile</a>
     </div>
-  </div>
+</div>
 
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Card title</h4>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
+  <!-- <div class="card" id="postsContainer"> -->
+    
+</div>
 
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Card title</h4>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
+        
+    </main>
 
-
-
+ 
     <footer></footer>
 
     <!-- Page-specific code -->
