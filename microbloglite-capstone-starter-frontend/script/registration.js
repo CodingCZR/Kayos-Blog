@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const registrationForm = document.getElementById("registrationForm");
+    const userService = new UserService(); // from user-service.js
 
     registrationForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -11,22 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
             password: formData.get("password"),
         };
 
-        fetch("http://localhost:5000/api/users", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // 
-            alert(`Registration successful for ${data.username}. Please login.`);
-            window.location.href = "index.html"; //after registration is succesful redirect to login(index) page
-        })
-        .catch(error => {
-            console.error("Registration error:", error);
-            alert("Registration failed. Please try again later.");
-        });
+        userService.createUser(userData) // Use createUser method of UserService
+            .then(data => {
+                alert(`Registration successful for ${data.username}. Please login.`);
+                window.location.href = "index.html"; // after regfiustering redirect user to loginpage/index
+            })
+            .catch(error => {
+                console.error("Registration error:", error);
+                alert("Registration failed. Please try again later.");
+            });
     });
 });
