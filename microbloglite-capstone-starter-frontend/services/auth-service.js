@@ -58,7 +58,7 @@ class AuthService
                 sessionStorage.username = loginData.username
 
                 window.localStorage.setItem("login-data", JSON.stringify(loginData))
-                window.location.assign("/posts")  // redirect
+                window.location.assign("/posts/index.html")  // redirect
 
                 return loginData
             })
