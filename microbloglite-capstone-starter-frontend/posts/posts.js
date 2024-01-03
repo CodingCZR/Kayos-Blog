@@ -77,22 +77,6 @@ function createNewPost() {
         });
 }
 
-// Function to display all posts
-// function displayPosts(posts) {
-//     var postsContainer = document.getElementById("postsContainer");
-//     postsContainer.innerHTML = "";
-
-//     posts.forEach(post => {
-//         var postDiv = document.createElement("div");
-//         postDiv.className = "post";
-
-//         var postContent = post.username + ":" + post.text;
-
-//         postDiv.innerHTML = postContent;
-
-//         postsContainer.appendChild(postDiv)
-//     });
-// }
 
 function displayPosts(posts) {
     var postsContainer = document.getElementById("postsContainer");
@@ -112,7 +96,7 @@ function displayPosts(posts) {
         var textElement = document.createElement("p");
         textElement.className = "card-text";
         textElement.innerText = post.text;
-        
+
         var profileLinkElement = document.createElement("a");
         profileLinkElement.href = "../profile.html";
         profileLinkElement.className = "card-link";
