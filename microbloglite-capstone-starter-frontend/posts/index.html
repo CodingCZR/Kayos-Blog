@@ -65,11 +65,11 @@
     </header>
 
     <main>
-        <input type="text" id="openModalButton" onclick="openModal()" placeholder="Click me to open the modal">
+        <input type="text" id="openModalButton" placeholder="Click me to open the modal">
 
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
+                <span class="close">&times;</span>
                 <label for="modalTextBox">Enter Text:</label>
                 <input type="text" id="modalTextBox">
                 <button onclick="submitModal()">Submit</button>
@@ -90,7 +90,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <!-- "Post" button to trigger the postTweet function -->
-                <button type="button" class="btn btn-primary" onclick="postTweet()">Post</button>
+                <button type="button" class="btn btn-primary" onclick="createNewPost()">Post</button>
             </div>
         </div>
     </div>
@@ -103,6 +103,9 @@
       <p class="card-text"> The body of the blog.</p>
       <a href="#" class="card-link">User Profile</a>
     </div>
+  </div>
+
+  <div class="card" id="postsContainer">
   </div>
 
         
