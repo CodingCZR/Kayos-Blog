@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             // 
             alert(`Registration successful for ${data.username}. Please login.`);
-            window.location.href = "login.html"; //after registration is succesful redirect to login page
+            window.location.href = "index.html"; //after registration is succesful redirect to login(index) page
         })
         .catch(error => {
             console.error("Registration error:", error);
