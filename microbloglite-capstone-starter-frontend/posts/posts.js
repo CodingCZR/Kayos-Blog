@@ -78,6 +78,8 @@ function createNewPost() {
 }
 
 
+// Function to display all posts
+
 function displayPosts(posts) {
     var postsContainer = document.getElementById("postsContainer");
     postsContainer.innerHTML = "";
