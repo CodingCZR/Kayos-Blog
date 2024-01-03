@@ -2,26 +2,26 @@
 class PostService extends ServicesBase
 {
 
-    apiBaseUrl = ""
+    apiBaseUrl = "http://localhost:5000"
 
-    constructor()
+    constructor(token)
     {
         super()
         this.apiBaseUrl = this.baseUrl + "/api/posts"
+        this.token = token;
     }
 
     getAllPost(){
         const options = {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + sessionStorage.token,
+                "Authorization": `Bearer ${this.token}`,
             },
         }
 
-        return fetch(this.apiBaseUrl, options)
+        return fetch(this.apiBaseUrl,options)
             .then(response => response.json())
-            .then(data => data)
+            .then(post => post)
             .catch((error) =>
             {
                 console.log(error);
@@ -32,8 +32,7 @@ class PostService extends ServicesBase
         const options = {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + sessionStorage.token,
+                "Authorization": `Bearer ${this.token}`,
             },
             body: JSON.stringify(post),
         }
