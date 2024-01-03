@@ -54,6 +54,9 @@ class AuthService
             .then(response => response.json())
             .then(loginData =>
             {
+                sessionStorage.token = loginData.token
+                sessionStorage.username = loginData.username
+
                 window.localStorage.setItem("login-data", JSON.stringify(loginData))
                 window.location.assign("/posts")  // redirect
 
@@ -96,6 +99,8 @@ class AuthService
                 // browser side of logging out (below) even if there is an 
                 // error with the fetch request above.
 
+                sessionStorage.clear()  // remove token from sessionStorage
+                
                 window.localStorage.removeItem("login-data")  // remove login data from LocalStorage
                 window.location.assign("/")  // redirect back to landing page
             })

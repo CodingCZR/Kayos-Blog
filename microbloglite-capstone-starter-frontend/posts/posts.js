@@ -1,15 +1,28 @@
-/* Posts Page JavaScript */
-
-// switch token with your own (only until we learn how to store tokens in window)
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJlZXp1ciIsImlhdCI6MTcwNDIzMjY2MywiZXhwIjoxNzA0MzE5MDYzfQ.YTEylKx6lPvRdEevykvKkXQZwFE309SOiSygxKNWV6o'
+let authService;
+let postService;
 
 /* Posts Page JavaScript */
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
     btn.addEventListener("click", toggleModal);
     span.addEventListener("click", toggleModal);
 
-    getPosts();
-};
+    // Get the token from local storage
+    authService = new AuthService();
+    const user = authService.getLoginData();
+    const token = user.token;
+
+    // Get all posts
+    postService = new PostService(token);
+    postService.getAllPost().then((data) =>
+    {
+        console.log(data);
+
+        // Display all posts
+        displayPosts(data);
+    })
+
+});
+
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -63,23 +76,6 @@ function createNewPost() {
             getPosts();
         });
 }
-
-// Function to get all posts
-function getPosts() {
-    fetch("http://localhost:5000/api/posts", {
-        method: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + token,
-        }
-    })
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(jsonResponse) {
-            console.log(jsonResponse);
-            displayPosts(jsonResponse);
-        });
-};
 
 // Function to display all posts
 function displayPosts(posts) {

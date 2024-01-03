@@ -2,11 +2,48 @@
 class PostService extends ServicesBase
 {
 
-    apiBaseUrl = ""
+    apiBaseUrl = "http://localhost:5000"
 
-    constructor()
+    constructor(token)
     {
+        super()
         this.apiBaseUrl = this.baseUrl + "/api/posts"
+        this.token = token;
+    }
+
+    getAllPost(){
+        const options = {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${this.token}`,
+            },
+        }
+
+        return fetch(this.apiBaseUrl,options)
+            .then(response => response.json())
+            .then(post => post)
+            .catch((error) =>
+            {
+                console.log(error);
+            })
+    }
+
+    createPost(post){
+        const options = {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${this.token}`,
+            },
+            body: JSON.stringify(post),
+        }
+
+        return fetch(this.apiBaseUrl, options)
+            .then(response => response.json())
+            .then(data => data)
+            .catch((error) =>
+            {
+                console.log(error);
+            })
     }
 
 }
