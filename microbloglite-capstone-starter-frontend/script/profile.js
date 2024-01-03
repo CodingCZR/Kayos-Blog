@@ -30,14 +30,14 @@ async function fetchAndPopulateProfile() {
                 document.getElementById("username").textContent = userData.user.username;
                 document.getElementById("aboutMe").textContent = userData.user.about || "About Me Not Provided";
             } else {
-                //case where user data cannot be fetched
+                //if user data cannot be fetched
                 console.error("Error fetching user data");
             }
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
     } else {
-        // if the user is not authenticated, redirect to the login page/index
+        // if the user is not authenticated, redirect to the login page:index.html
         window.location.href = "index.html";
     }
 }
