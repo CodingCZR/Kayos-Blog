@@ -40,24 +40,25 @@ class UserService extends ServicesBase {
                 console.error(error);
             });
     }
-}
 
-updateUser(user); {
-    const options = {
-        method: "PUT", 
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + sessionStorage.token,
-        },
-        body: JSON.stringify(user),
-    };
+    // Corrected updateUser method declaration
+    updateUser(user) {
+        const options = {
+            method: "PUT", 
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + sessionStorage.token,
+            },
+            body: JSON.stringify(user),
+        };
 
-    const updateUserUrl = `${this.apiBaseUrl}/${user.id}`; 
+        const updateUserUrl = `${this.apiBaseUrl}/${user.id}`; 
 
-    return fetch(updateUserUrl, options)
-        .then(response => response.json())
-        .then(data => data)
-        .catch((error) => {
-            console.error(error);
-        });
+        return fetch(updateUserUrl, options)
+            .then(response => response.json())
+            .then(data => data)
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 }
