@@ -56,55 +56,42 @@
         </div>
     </nav>
 
-
-
-    <header>
-        <h1>POSTS PAGE<h1>
+    <header class="mt-2 mb-2">
+        <h1 >Activity Feed <h1>
     </header>
 
     <main>
-        <input type="text" id="openModalButton" placeholder="Click me to open the modal">
 
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <label for="modalTextBox">Enter Text:</label>
-                <input type="text" id="modalTextBox">
-                <button onclick="submitModal()">Submit</button>
-            </div>
+      <div class="card card-body mt-2 mb-3">
+        <div class="d-flex mb-3">
+          <!-- Post input -->
+          <form class="w-100">
+            <textarea class="form-control pe-4 border-0" rows="2" data-autoresize="" placeholder="Share your thoughts..." style="height: 61px;"></textarea>
+          </form>
+          <!-- Post button -->
+          <div class="d-flex align-items-center">
+            <button type="button" class="btn btn-primary btn-sm">Post</button> 
         </div>
-<!-- Post Modal -->
- <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="postModalLabel">Write a Post</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Input field for the tweet content -->
-                <textarea class="form-control" id="postContent" placeholder="What's happening?"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <!-- "Post" button to trigger the postTweet function -->
-                <button type="button" class="btn btn-primary" onclick="createNewPost()">Post</button>
-            </div>
-        </div>
-    </div>
-</div>
+      </div>
 
-<div class="card" id = "postsContainer">
+        <!-- Card body END -->
+        <!-- Card footer START -->
+        <div class="card-footer border-0 pt-0">
+          <!-- Load more comments -->
+        </div>
+        <!-- Card footer END -->
+      </div>
+
+    <div class="card" id = "postsContainer">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">Username</h6>
       <p class="card-text"> The body of the blog.</p>
       <a href="../profile.html" class="card-link">User Profile</a>
     </div>
-</div>
-
-  <!-- <div class="card" id="postsContainer"> -->
     
-</div>
+    </div>
+      <!-- <div class="card" id="postsContainer"> -->
+    </div>
 
         
     </main>
