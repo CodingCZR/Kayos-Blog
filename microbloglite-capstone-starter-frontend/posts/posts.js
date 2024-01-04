@@ -83,16 +83,38 @@ function createNewPost() {
         });
 }
 
+
 // Function to display all posts
+
 function displayPosts(posts) {
     var postsContainer = document.getElementById("postsContainer");
     postsContainer.innerHTML = "";
 
     posts.forEach(post => {
-        var postDiv = document.createElement("div");
-        postDiv.className = "post";
-        postDiv.innerText = post.text;
+        var cardDiv = document.createElement("div");
+        cardDiv.className = "card";
 
-        postsContainer.appendChild(postDiv);
+        var cardBodyDiv = document.createElement("div");
+        cardBodyDiv.className = "card-body";
+
+        var usernameElement = document.createElement("h6");
+        usernameElement.className = "card-subtitle mb-2 text-muted";
+        usernameElement.innerText = post.username || "Anonymous";
+
+        var textElement = document.createElement("p");
+        textElement.className = "card-text";
+        textElement.innerText = post.text;
+
+        var profileLinkElement = document.createElement("a");
+        profileLinkElement.href = "../profile.html";
+        profileLinkElement.className = "card-link";
+        profileLinkElement.innerText = "User Profile";
+
+        cardBodyDiv.appendChild(usernameElement);
+        cardBodyDiv.appendChild(textElement);
+        cardBodyDiv.appendChild(profileLinkElement);
+
+        cardDiv.appendChild(cardBodyDiv);
+        postsContainer.appendChild(cardDiv);
     });
 }
