@@ -1,21 +1,26 @@
 let authService;
-let PostService;
+let postService;
 
 /* Posts Page JavaScript */
 document.addEventListener("DOMContentLoaded", function() {
     btn.addEventListener("click", toggleModal);
     span.addEventListener("click", toggleModal);
 
+    // Get the token from local storage
     authService = new AuthService();
     const user = authService.getLoginData();
     const token = user.token;
 
-    postService = new PostService();
+    // Get all posts
+    postService = new PostService(token);
     postService.getAllPost().then((data) =>
     {
         console.log(data);
+
+        // Display all posts
         displayPosts(data);
     })
+
 });
 
 
@@ -43,27 +48,6 @@ window.onclick = function(event) {
         toggleModal();
     }
 };
-
-
-
-
-
-// Function to verify that the user is logged in
-// function verifyAndReturnLogin() {
-//     const authService = new AuthService();
-
-//     if (authService.isLoggedIn() === false) {
-//          window.location.replace("/index.html");
-//     }
-
-//     const loginJSON = window.localStorage.getItem("login-data")
-//     console.log(loginJSON);
-
-//     const loginData = JSON.parse(loginJSON) || {}
-
-//     const token = loginData.token;
-//     return token;
-// }
 
 function submitModal(){
     createNewPost();
@@ -93,35 +77,38 @@ function createNewPost() {
         });
 }
 
-// Function to get all posts
-function getPosts() {
-
-    // Call to API to get all posts
-    fetch("http://localhost:5000/api/posts", {
-        method: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + user.token,
-        }
-    })
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(jsonResponse) {
-            console.log(jsonResponse);
-            displayPosts(jsonResponse);
-        });
-};
 
 // Function to display all posts
+
 function displayPosts(posts) {
     var postsContainer = document.getElementById("postsContainer");
     postsContainer.innerHTML = "";
 
     posts.forEach(post => {
-        var postDiv = document.createElement("div");
-        postDiv.className = "post";
-        postDiv.innerText = post.text;
+        var cardDiv = document.createElement("div");
+        cardDiv.className = "card";
 
-        postsContainer.appendChild(postDiv);
+        var cardBodyDiv = document.createElement("div");
+        cardBodyDiv.className = "card-body";
+
+        var usernameElement = document.createElement("h6");
+        usernameElement.className = "card-subtitle mb-2 text-muted";
+        usernameElement.innerText = post.username || "Anonymous";
+
+        var textElement = document.createElement("p");
+        textElement.className = "card-text";
+        textElement.innerText = post.text;
+
+        var profileLinkElement = document.createElement("a");
+        profileLinkElement.href = "../profile.html";
+        profileLinkElement.className = "card-link";
+        profileLinkElement.innerText = "User Profile";
+
+        cardBodyDiv.appendChild(usernameElement);
+        cardBodyDiv.appendChild(textElement);
+        cardBodyDiv.appendChild(profileLinkElement);
+
+        cardDiv.appendChild(cardBodyDiv);
+        postsContainer.appendChild(cardDiv);
     });
 }
