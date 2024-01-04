@@ -9,13 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const userData = {
             username: formData.get("username"),
             fullName: formData.get("fullName"),
+            bio: formData.get("bio"),
             password: formData.get("password"),
+            
         };
 
-        userService.createUser(userData) // Use createUser method of UserService
+        userService.createUser(userData) 
             .then(data => {
                 alert(`Registration successful for ${data.username}. Please login.`);
-                window.location.href = "index.html"; // after regfiustering redirect user to loginpage/index
+                window.location.href = "index.html"; // after registering, redirect user to login page/index
             })
             .catch(error => {
                 console.error("Registration error:", error);
