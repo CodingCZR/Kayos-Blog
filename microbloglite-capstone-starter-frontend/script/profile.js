@@ -12,11 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchUserProfile();
     }
 
-    // event listener for logout
-    document.getElementById('logoutButton').addEventListener('click', () => {
-        authService.logout();
-    });
-
     // event listener for Edit buttons
     document.getElementById('editUsername').addEventListener('click', () => {
         document.getElementById('username').style.display = 'none';
@@ -75,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // function to display  profile data
+    // function to display profile data
     function displayUserProfile(user) {
         document.getElementById('fullName').textContent = user.fullName;
         document.getElementById('username').textContent = user.username;
