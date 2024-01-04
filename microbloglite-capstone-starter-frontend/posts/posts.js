@@ -54,15 +54,22 @@ window.onclick = function(event) {
 function submitModal(){
     createNewPost();
 }
+
 // Function to create a new post
 function createNewPost() {
     var postContent = document.getElementById("postContent");
+
+    if (!postContent.trim()) {
+        alert("Post content cannot be empty!");
+        return;
+    }
 
     // Call to API to create a new post
     fetch("http://localhost:5000/api/posts", {
         method: "POST",
         headers: {
             'authorization': 'Bearer ' + token,
+            'Content-Type' : 'application/json',
         },
         body: JSON.stringify({
             content: postContent.value
@@ -79,6 +86,11 @@ function createNewPost() {
         });
 }
 
+// Add an event listener for the post button
+var postButton = document.getElementById("postButton");
+postButton.addEventListener("click", function() {
+    createNewPost(); // Call your function when the button is clicked
+});
 
 // Function to display all posts
 
