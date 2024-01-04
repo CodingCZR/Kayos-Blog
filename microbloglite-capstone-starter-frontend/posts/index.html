@@ -30,25 +30,21 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-dark custom-navbar" data-bs-theme="dark">
+   <nav class="navbar navbar-expand-lg bg-dark custom-navbar" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand ms-3" href="#">KAYOS</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarColor01">
+          <div class="navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="#">Home
+                <a class="nav-link active" href="index.html">Home
                 </a>
                 <span class="visually-hidden">(current)</span>
             </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About KAYOS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="registration.html">Log-in / Sign-Up</a>
-              </li>
+                 <button class="btn btn-primary" id="logoutBtn">log-out</button>
                 </div>
               </li>
             </ul>
@@ -56,25 +52,26 @@
         </div>
     </nav>
 
-
-
-    <header>
-        <h1>POSTS PAGE<h1>
+    <header class="mt-2 mb-2">
+        <h1 >Activity Feed <h1>
     </header>
 
     <main>
-        <input type="text" id="openModalButton" placeholder="Click me to open the modal">
 
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <label for="modalTextBox">Enter Text:</label>
-                <input type="text" id="modalTextBox">
-                <button onclick="submitModal()">Submit</button>
-            </div>
+      <div class="card card-body mt-2 mb-3">
+        <div class="d-flex mb-3">
+          <!-- Post input -->
+          <form class="w-100">
+            <textarea class="form-control pe-4 border-0" rows="2" data-autoresize="" placeholder="Share your thoughts..." style="height: 61px;"></textarea>
+          </form>
+          <!-- Post button -->
+          <div class="d-flex align-items-center">
+            <button type="button" class="btn btn-primary btn-sm">Post</button> 
         </div>
-<!-- Post Modal -->
- <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+        </div>    
+      </div>
+
+    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -92,19 +89,26 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 
-<div class="card" id = "postsContainer">
+        <!-- Card body END -->
+        <!-- Card footer START -->
+        <div class="card-footer border-0 pt-0">
+          <!-- Load more comments -->
+        </div>
+        <!-- Card footer END -->
+      </div>
+
+    <div class="card" id = "postsContainer">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">Username</h6>
       <p class="card-text"> The body of the blog.</p>
       <a href="../profile.html" class="card-link">User Profile</a>
     </div>
-</div>
 
-  <!-- <div class="card" id="postsContainer"> -->
-    
-</div>
+    </div>
+      <!-- <div class="card" id="postsContainer"> -->
+    </div>
 
     <button class="btn btn-primary" id="logoutBtn">log-out
     </button>

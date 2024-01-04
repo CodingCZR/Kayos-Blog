@@ -3,8 +3,8 @@ let postService;
 
 /* Posts Page JavaScript */
 document.addEventListener("DOMContentLoaded", function() {
-    btn.addEventListener("click", toggleModal);
-    span.addEventListener("click", toggleModal);
+    // btn.addEventListener("click", toggleModal);
+    // span.addEventListener("click", toggleModal);
 
     // Get the token from local storage
     authService = new AuthService();
@@ -92,17 +92,17 @@ function displayPosts(posts) {
 
     posts.forEach(post => {
         var cardDiv = document.createElement("div");
-        cardDiv.className = "card";
+        cardDiv.className = "card mt-2";
 
         var cardBodyDiv = document.createElement("div");
         cardBodyDiv.className = "card-body";
 
-        var usernameElement = document.createElement("h6");
-        usernameElement.className = "card-subtitle mb-2 text-muted";
-        usernameElement.innerText = post.username || "Anonymous";
+        var usernameElement = document.createElement("h4");
+        usernameElement.className = "card-subtitle mb-2";
+        usernameElement.innerText = post.username;
 
         var textElement = document.createElement("p");
-        textElement.className = "card-text";
+        textElement.className = "card-text text-secondary";
         textElement.innerText = post.text;
 
         var profileLinkElement = document.createElement("a");
