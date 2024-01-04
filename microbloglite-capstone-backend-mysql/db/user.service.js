@@ -34,9 +34,9 @@ class UserService {
 
     async addUser(user) {
         
-        const sql = `INSERT INTO users (username, fullName, password) VALUES (?,?,?)`
+        const sql = `INSERT INTO users (username, fullName, password, bio) VALUES (?,?,?,?)`
         
-        await query(sql, [user.username, user.fullName, user.password])
+        await query(sql, [user.username, user.fullName, user.password, user.bio])
         const newUser = await this.getUserByUsername(user.username)
 
         if(newUser) delete newUser.bio
