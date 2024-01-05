@@ -28,22 +28,20 @@ class PostService extends ServicesBase
             })
     }
 
-    createPost(post){
+    createPost(post) {
         const options = {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(post),
-        }
+        };
 
         return fetch(this.apiBaseUrl, options)
-            .then(response => response.json())
-            .then(data => data)
-            .catch((error) =>
-            {
-                console.log(error);
-            })
-    }
-
-}
+        .then(response => response.json())
+        .then(data => {
+            //refresh the page
+            location.reload();
+        });
+}};
