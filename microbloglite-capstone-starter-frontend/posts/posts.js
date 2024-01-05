@@ -1,11 +1,9 @@
 let authService;
 let postService;
+let token;
 
 /* Posts Page JavaScript */
 document.addEventListener("DOMContentLoaded", function() {
-    // btn.addEventListener("click", toggleModal);
-    // span.addEventListener("click", toggleModal);
-
     // Get the token from local storage
     authService = new AuthService();
     const user = authService.getLoginData();
@@ -20,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Display all posts
         displayPosts(data);
     })
+
+    document.getElementById("postButton").addEventListener("click", createNewPost);
 
 });
 
@@ -49,9 +49,9 @@ window.onclick = function(event) {
     }
 };
 
-function submitModal(){
-    createNewPost();
-}
+
+// Function to create a new post
+
 // Function to create a new post
 function createNewPost() {
     var postContent = document.getElementById("postContent");
@@ -61,20 +61,66 @@ function createNewPost() {
         method: "POST",
         headers: {
             'authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             content: postContent.value
         })
     })
         .then(function(response) {
+            console.log('Response status:', response.status);
             return response.json();
         })
         .then(function(jsonResponse) {
-            console.log(jsonResponse);
+            console.log('JSON Response:', jsonResponse);
             toggleModal();
             postContent.value = "";
-            getPosts();
+
+            // Instead of getPosts(), call getAllPost() to retrieve and display all posts
+            postService.getAllPost().then((data) => {
+                // Display all posts
+                displayPosts(data);
+            });
+
+            // Display the newly created post
+            displayNewPost(jsonResponse);
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+            // Handle error (e.g., display an error message to the user)
         });
+}
+
+
+// Function to display a single post
+function displayNewPost(post) {
+    var postsContainer = document.getElementById("postsContainer");
+
+    var cardDiv = document.createElement("div");
+    cardDiv.className = "card mt-2";
+
+    var cardBodyDiv = document.createElement("div");
+    cardBodyDiv.className = "card-body";
+
+    var usernameElement = document.createElement("h4");
+    usernameElement.className = "card-subtitle mb-2";
+    usernameElement.innerText = post.username;
+
+    var textElement = document.createElement("p");
+    textElement.className = "card-text text-secondary";
+    textElement.innerText = post.text;
+
+    var profileLinkElement = document.createElement("a");
+    profileLinkElement.href = "../profile.html";
+    profileLinkElement.className = "card-link";
+    profileLinkElement.innerText = "User Profile";
+
+    cardBodyDiv.appendChild(usernameElement);
+    cardBodyDiv.appendChild(textElement);
+    cardBodyDiv.appendChild(profileLinkElement);
+
+    cardDiv.appendChild(cardBodyDiv);
+    postsContainer.appendChild(cardDiv);
 }
 
 
