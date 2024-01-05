@@ -19,10 +19,19 @@ document.addEventListener("DOMContentLoaded", function() {
         displayPosts(data);
     })
 
+
     document.getElementById("postButton").addEventListener("click", createNewPost);
 
 });
+    const postButton = document.getElementById("postButton");
 
+
+    // Get the logout button
+    const logoutButton = document.getElementById("logoutBtn");
+    logoutButton.addEventListener("click", () => {
+        authService.logout();
+    });
+});
 
 var postForm = document.getElementById("postForm");
 postForm.addEventListener("submit", function(event) {

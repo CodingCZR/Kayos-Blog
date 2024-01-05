@@ -76,7 +76,7 @@ class AuthService
     // `fetch()` requests you may need to write.
     async logout()
     {
-        const loginData = getLoginData()
+        const loginData = this.getLoginData();
 
         // GET /auth/logout
         const options = {
