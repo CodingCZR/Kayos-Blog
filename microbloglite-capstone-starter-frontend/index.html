@@ -105,23 +105,42 @@
       button:hover {
           background-color: #3b5998;
       }
+
+      @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px) rotate(-5deg); }
+      75% { transform: translateX(5px) rotate(5deg); }
+      100% { transform: translateX(0); }
+    }
+
+     .shake:hover {
+      animation: shake 0.2s infinite;
+        }
+
+    li {
+      list-style-type: square;
+      font-size: larger;
+    }
     </style>
 </head>
 <body>
 <div class="gradient-overlay"></div>
-
     <header>
-        <h1>Welcome to <code style="color: blue;">KAYOS</code></h1>
+        <h1 class="shake ">Welcome to <code class="shake" style="color: blue;">KAYOS</code></h1>
     </header>
 
     <div class="container mt-5">
       <div class="row">
           <div class="col-md-6 container-left">
               <div class="info ">
-                  <h2>Welcome to Our Social Media Network</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl at tincidunt tincidunt,
-                      mauris nisi lacinia mi, id aliquet est urna ac nunc.</p>
-              </div>
+                  <h2 class="text-center mt-2">Welcome to</h2>
+                  <h1 class="text-center mb-3">KAYOS</h1>
+                    <p class="text-center">The most KAYOTIC blog </p>
+                    <li class="mt-2">Connect with friends</li>
+                    <li class="mt-2">Share your thoughts</li>
+                    <li class="mt-2">Discover exciting content</li>
+                    <li class="mt-2">Create a personalized profile</li>
+            </div>
           </div>
 
           <div class="col-md-6 container-right">
