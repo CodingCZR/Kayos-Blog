@@ -1,83 +1,71 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // from authService and UserService
+document.addEventListener('DOMContentLoaded', function() {
     const authService = new AuthService();
     const userService = new UserService();
+    let currentUserData = {}; // To store the current user data
 
-    // check if the user is logged in
+    // Check if user is logged in
     if (!authService.isLoggedIn()) {
-        // if not logged in, redirect to the login page/index
-        window.location.href = './index.html';
-    } else {
-        // if logged in, fetch & display user profile
-        fetchUserProfile();
+        window.location.href = 'index.html';
+        return;
     }
 
-    // event listener for Edit buttons
-    document.getElementById('editUsername').addEventListener('click', () => {
-        document.getElementById('username').style.display = 'none';
+    // Fetch and display user data
+    const loginData = authService.getLoginData();
+    userService.getUser(loginData.username)
+        .then(userData => {
+            currentUserData = userData; // Store user data for later use
+            document.getElementById('fullName').textContent = userData.fullName;
+            document.getElementById('username').textContent = userData.username;
+            document.getElementById('bio').textContent = userData.bio;
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+
+    // Edit username logic
+    document.getElementById('editUsername').addEventListener('click', function() {
+        document.getElementById('editUsernameInput').value = currentUserData.username;
         document.getElementById('editUsernameInput').style.display = 'block';
-        document.getElementById('editUsernameInput').value = document.getElementById('username').textContent;
-
         document.getElementById('saveChanges').style.display = 'block';
     });
 
-    document.getElementById('editBio').addEventListener('click', () => {
-        document.getElementById('bio').style.display = 'none';
+    // Edit bio logic
+    document.getElementById('editBio').addEventListener('click', function() {
+        document.getElementById('editBioInput').value = currentUserData.bio;
         document.getElementById('editBioInput').style.display = 'block';
-        document.getElementById('editBioInput').value = document.getElementById('bio').textContent;
-
         document.getElementById('saveChanges').style.display = 'block';
     });
 
-    // event listener for Save Changes button
-    document.getElementById('saveChanges').addEventListener('click', async () => {
-        const editedUsername = document.getElementById('editUsernameInput').value;
-        const editedBio = document.getElementById('editBioInput').value;
+    // Save changes logic
+    document.getElementById('saveChanges').addEventListener('click', function() {
+        const updatedUsername = document.getElementById('editUsernameInput').value || currentUserData.username;
+        const updatedBio = document.getElementById('editBioInput').value || currentUserData.bio;
 
-        // update the displayed values
-        document.getElementById('username').textContent = editedUsername;
-        document.getElementById('bio').textContent = editedBio;
+        const updatedUserData = {
+            id: currentUserData.id, // assuming the ID is part of the fetched user data
+            username: updatedUsername,
+            bio: updatedBio,
+            // include other fields as needed
+        };
 
-        // hide input fields and show the original content
-        document.getElementById('username').style.display = 'block';
-        document.getElementById('editUsernameInput').style.display = 'none';
-        document.getElementById('bio').style.display = 'block';
-        document.getElementById('editBioInput').style.display = 'none';
+        userService.updateUser(updatedUserData)
+            .then(response => {
+                // Update the UI with new data or show a success message
+                document.getElementById('username').textContent = updatedUsername;
+                document.getElementById('bio').textContent = updatedBio;
 
-        // save changes to the server 
-        try {
-            const loggedInUser = {
-                username: editedUsername,
-                bio: editedBio,
-            };
-            await userService.updateUser(loggedInUser);
-        } catch (error) {
-            console.error('Error updating user profile:', error);
-        }
+                // Hide the input fields and save button
+                document.getElementById('editUsernameInput').style.display = 'none';
+                document.getElementById('editBioInput').style.display = 'none';
+                document.getElementById('saveChanges').style.display = 'none';
+
+                // Update currentUserData with new values
+                currentUserData.username = updatedUsername;
+                currentUserData.bio = updatedBio;
+            })
+            .catch(error => {
+                console.error('Error updating user data:', error);
+                // Handle error, show message to user
+            });
     });
 
-    // function to fetch and display user profile
-    async function fetchUserProfile() {
-        try {
-            const users = await userService.getAllUsers();
-            const loggedInUsername = sessionStorage.username;
-            const loggedInUser = users.find(user => user.username === loggedInUsername);
-
-            if (loggedInUser) {
-                displayUserProfile(loggedInUser);
-            } else {
-                console.error('Logged-in user profile not found.');
-            }
-        } catch (error) {
-            console.error('Error fetching user profile:', error);
-        }
-    }
-
-    // function to display profile data
-    function displayUserProfile(user) {
-        document.getElementById('fullName').textContent = user.fullName;
-        document.getElementById('username').textContent = user.username;
-        document.getElementById('bio').textContent = user.bio ? user.bio : "No bio provided";
-    }
+    // Additional logic for other functionalities
 });
-
