@@ -61,4 +61,21 @@ class UserService extends ServicesBase {
                 console.error(error);
             });
     }
+
+    getUser(username) {
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + sessionStorage.token,
+            },
+        };
+
+        return fetch(`${this.apiBaseUrl}/${username}`, options)
+            .then(response => response.json())
+            .then(data => data)
+            .catch((error) => {
+                console.error('Error fetching user:', error);
+            });
+    }
 }
