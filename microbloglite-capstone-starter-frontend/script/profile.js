@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch and display user data
     const loginData = authService.getLoginData();
     userService.getUser(loginData.username)
-        .then(userData => {
-            currentUserData = userData; // Store user data 
+        .then(Data => {
+            currentUserData = Data; // Store user data 
             document.getElementById('fullName').textContent = userData.fullName;
             document.getElementById('username').textContent = userData.username;
             document.getElementById('bio').textContent = userData.bio;
