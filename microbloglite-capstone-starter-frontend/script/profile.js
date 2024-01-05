@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error fetching user data:', error));
 
+         
+
     // Edit username 
     document.getElementById('editUsername').addEventListener('click', function() {
         document.getElementById('editUsernameInput').value = currentUserData.username;
