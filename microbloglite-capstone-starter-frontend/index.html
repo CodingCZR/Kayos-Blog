@@ -105,18 +105,36 @@
       button:hover {
           background-color: #6f7581;
       }
+
+      @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px) rotate(-5deg); }
+      75% { transform: translateX(5px) rotate(5deg); }
+      100% { transform: translateX(0); }
+    }
+
+     .shake:hover {
+      animation: shake 0.2s infinite;
+        }
+
+    li {
+      list-style-type: square;
+      font-size: larger;
+    }
     </style>
 </head>
 <body>
 <div class="gradient-overlay"></div>
 
+
     <div class="container mt-5">
       <div class="row">
           <div class="col-md-6 container-left">
               <div class="info ">
+
                   <h2>Welcome to KAYOS</h2>
                   <p>Kayos, a dynamic and forward-thinking social media company, is on a mission to redefine the way the world connects. With an unwavering commitment to excellence, Kayos has set out to be the epitome of social connectivity, striving to create a platform that goes beyond mere interactions and fosters meaningful relationships. Rooted in innovation, Kayos leverages cutting-edge technology to provide users with a seamless and enriching social experience. The company envisions a world where borders blur and diverse communities seamlessly interconnect, transcending geographical constraints.</p>
-              </div>
+
           </div>
 
           <div class="col-md-6 container-right">

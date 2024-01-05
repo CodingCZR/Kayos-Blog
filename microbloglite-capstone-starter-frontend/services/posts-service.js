@@ -38,10 +38,19 @@ class PostService extends ServicesBase
             body: JSON.stringify(post),
         };
 
+
         return fetch(this.apiBaseUrl, options)
-        .then(response => response.json())
-        .then(data => {
-            //refresh the page
-            location.reload();
-        });
-}};
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Post created successfully:", data);
+            })
+            .catch(error => {
+                console.error("Error creating post:", error);
+            });
+        }
+    }
