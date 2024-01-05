@@ -18,19 +18,19 @@ document.addEventListener("DOMContentLoaded", function() {
         // Display all posts
         displayPosts(data);
     })
-
-
-    document.getElementById("postButton").addEventListener("click", createNewPost);
-
-});
+  document.getElementById("postButton").addEventListener("click", createNewPost);
     const postButton = document.getElementById("postButton");
-
 
     // Get the logout button
     const logoutButton = document.getElementById("logoutBtn");
     logoutButton.addEventListener("click", () => {
         authService.logout();
     });
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+});
 
 
 var postForm = document.getElementById("postForm");
