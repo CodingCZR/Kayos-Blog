@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
     text: postContent.value
 };
 
-// Call the createPost method with the newPost object
-postService.createPost(newPost)
+// Call the createprofilePost method with the newPost object
+postService.createprofilePost(newPost)
     .then(data => {
         // Success handling
         alert('Post created successfully');
