@@ -29,26 +29,22 @@
     
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg bg-dark custom-navbar" data-bs-theme="dark">
+<main>
+   <nav class="navbar navbar-expand-lg bg-dark custom-navbar" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand ms-3" href="#">KAYOS</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarColor01">
+          <div class="navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="#">Home
+                <a class="nav-link active" href="index.html">Home
                 </a>
                 <span class="visually-hidden">(current)</span>
             </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About KAYOS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="registration.html">Log-in / Sign-Up</a>
-              </li>
+                 <button class="btn btn-primary" id="logoutBtn">Logout</button>
                 </div>
               </li>
             </ul>
@@ -59,9 +55,7 @@
     <header class="mt-2 mb-2">
         <h1 >Activity Feed <h1>
     </header>
-
-    <main>
-
+    
       <div class="card card-body mt-2 mb-3">
         <div class="d-flex mb-3">
           <!-- Post input -->
@@ -72,34 +66,19 @@
           <div class="d-flex align-items-center">
             <button type="button" class="btn btn-primary btn-sm">Post</button> 
         </div>
+        </div>    
       </div>
+    </div>
 
-        <!-- Card body END -->
-        <!-- Card footer START -->
-        <div class="card-footer border-0 pt-0">
-          <!-- Load more comments -->
-        </div>
-        <!-- Card footer END -->
-      </div>
-
-    <div class="card" id = "postsContainer">
+    <div id = "postsContainer">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">Username</h6>
       <p class="card-text"> The body of the blog.</p>
       <a href="../profile.html" class="card-link">User Profile</a>
     </div>
-    
-    </div>
-      <!-- <div class="card" id="postsContainer"> -->
-    </div>
-
-        
-    </main>
-
- 
-    <footer></footer>
 
     <!-- Page-specific code -->
     <script src="./posts.js"></script>
+  </main>
 </body>
 </html>
