@@ -73,5 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
 
-    
+    // Get the logout button
+  const logoutButton = document.getElementById("logoutBtn");
+  logoutButton.addEventListener("click", () => {
+    authService.logout();
+  });
+  
 });
