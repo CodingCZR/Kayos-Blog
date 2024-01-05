@@ -51,8 +51,6 @@ window.onclick = function(event) {
 
 
 // Function to create a new post
-
-// Function to create a new post
 function createNewPost() {
     var postContent = document.getElementById("postContent");
 
@@ -76,7 +74,7 @@ function createNewPost() {
             toggleModal();
             postContent.value = "";
 
-            // Instead of getPosts(), call getAllPost() to retrieve and display all posts
+           
             postService.getAllPost().then((data) => {
                 // Display all posts
                 displayPosts(data);
@@ -87,7 +85,7 @@ function createNewPost() {
         })
         .catch(function(error) {
             console.error('Error:', error);
-            // Handle error (e.g., display an error message to the user)
+            
         });
 }
 
