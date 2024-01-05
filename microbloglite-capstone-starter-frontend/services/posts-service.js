@@ -44,4 +44,33 @@ class PostService extends ServicesBase
             //refresh the page
             location.reload();
         });
-}};
+    }
+    
+// function for profilepost.js, this logic is for the postForm in the profile.html
+    createprofilePost(post) {
+        const options = {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(post),
+        };
+
+
+        return fetch(this.apiBaseUrl, options)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Post created successfully:", data);
+            })
+            .catch(error => {
+                console.error("Error creating post:", error);
+            });
+        
+        }
+    }

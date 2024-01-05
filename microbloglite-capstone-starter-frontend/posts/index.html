@@ -27,6 +27,7 @@
     <script src="../services/auth-service.js"></script>
     <script src="../services/posts-service.js"></script>
     <script src="../services/user-services.js"></script>
+    <script src="../script/profilepost.js"></script>
     
 </head>
 <body>
@@ -72,15 +73,20 @@
       </div>
     </div>
 
-    <div id = "postsContainer">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">Username</h6>
-      <p class="card-text"> The body of the blog.</p>
-      <a href="../profile.html" class="card-link">User Profile</a>
-    </div>
+    <div id="postsContainer">
+      <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Username</h6>
+          <p class="card-text">The body of the blog.</p>
+          <a href="../profile.html" class="card-link">
+              <img style="width: 20px; height: 20px;" src="../pictures/mind-control.png" alt="User Profile">
+          </a>
+      </div>
+  </div>
+  
 
     <!-- Page-specific code -->
     <script src="./posts.js"></script>
+    <script src="../script/profilepost.js"></script>
   </main>
 </body>
 </html>
