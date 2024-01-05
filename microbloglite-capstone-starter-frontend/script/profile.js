@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fetch and display user data
     const loginData = authService.getLoginData();
-    userService.getUser(loginData.username)
+    userService.getUser(loginData)
         .then(userData => {
             currentUserData = userData; // Store user data 
             document.getElementById('fullName').textContent = userData.fullName;
             document.getElementById('username').textContent = userData.username;
             document.getElementById('bio').textContent = userData.bio;
+
         })
         .catch(error => console.error('Error fetching user data:', error));
 
@@ -40,9 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const updatedBio = document.getElementById('editBioInput').value || currentUserData.bio;
 
         const updatedUserData = {
-            id: currentUserData.id, 
+            id: currentUserData.username,
             username: updatedUsername,
             bio: updatedBio,
+            token: loginData.token,
+            fullName: currentUserData.fullName,
             
         };
 
@@ -60,6 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // update currentUserData with new values
                 currentUserData.username = updatedUsername;
                 currentUserData.bio = updatedBio;
+
+                console.log('User data updated successfully:', response);
+                console.log('Current user data:', currentUserData)
             })
             .catch(error => {
                 console.error('Error updating user data:', error);
@@ -67,5 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
 
-    
+    // Get the logout button
+  const logoutButton = document.getElementById("logoutBtn");
+  logoutButton.addEventListener("click", () => {
+    authService.logout();
+  });
+  
 });

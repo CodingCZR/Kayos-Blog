@@ -43,18 +43,18 @@ class UserService extends ServicesBase {
 
     // Corrected updateUser method declaration
     updateUser(user) {
+        console.log(user);
+        const token = user.token;
         const options = {
             method: "PUT", 
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + sessionStorage.token,
+                "Authorization": "Bearer " + token,
             },
             body: JSON.stringify(user),
         };
 
-        const updateUserUrl = `${this.apiBaseUrl}/${user.id}`; 
-
-        return fetch(updateUserUrl, options)
+        return fetch(`${this.apiBaseUrl}/${user.id}`, options)
             .then(response => response.json())
             .then(data => data)
             .catch((error) => {
@@ -62,18 +62,26 @@ class UserService extends ServicesBase {
             });
     }
 
-    getUser(username) {
+    getUser(loginUsername) {
+
+        let username = loginUsername.username;
+        const token = loginUsername.token;
+
         const options = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + sessionStorage.token,
+                "Authorization": "Bearer " + token,
             },
         };
 
         return fetch(`${this.apiBaseUrl}/${username}`, options)
             .then(response => response.json())
-            .then(data => data)
+            .then(data => {
+                console.log(data);
+                return data;
+            })
+
             .catch((error) => {
                 console.error('Error fetching user:', error);
             });
