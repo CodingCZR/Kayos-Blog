@@ -24,31 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("openModalButton");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// Function to toggle the modal
-function toggleModal() {
-    if (modal.style.display === "block") {
-        modal.style.display = "none"; // Close the modal if it's already open
-    } else {
-        modal.style.display = "block"; // Open the modal if it's closed
-    }
-}
-
-// Close the modal if the user clicks outside of it
-window.onclick = function(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-};
-
+var postForm = document.getElementById("postForm");
+postForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    createNewPost();
+});
 
 // Function to create a new post
 function createNewPost() {
