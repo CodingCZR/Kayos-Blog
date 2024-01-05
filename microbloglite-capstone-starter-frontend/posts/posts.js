@@ -51,34 +51,40 @@ function postNewPost(postContent) {
 
 // Function to display all posts
 function displayPosts(posts) {
-  var postsContainer = document.getElementById("postsContainer");
-  postsContainer.innerHTML = "";
-
-  posts.forEach((post) => {
-    var cardDiv = document.createElement("div");
-    cardDiv.className = "card mt-2";
-
-    var cardBodyDiv = document.createElement("div");
-    cardBodyDiv.className = "card-body";
-
-    var usernameElement = document.createElement("h4");
-    usernameElement.className = "card-subtitle mb-2";
-    usernameElement.innerText = post.username;
-
-    var textElement = document.createElement("p");
-    textElement.className = "card-text text-secondary";
-    textElement.innerText = post.text;
-
-    var profileLinkElement = document.createElement("a");
-    profileLinkElement.href = "../profile.html";
-    profileLinkElement.className = "card-link";
-    profileLinkElement.innerText = "User Profile";
-
-    cardBodyDiv.appendChild(usernameElement);
-    cardBodyDiv.appendChild(textElement);
-    cardBodyDiv.appendChild(profileLinkElement);
-
-    cardDiv.appendChild(cardBodyDiv);
-    postsContainer.appendChild(cardDiv);
-  });
-}
+    var postsContainer = document.getElementById("postsContainer");
+    postsContainer.innerHTML = "";
+  
+    posts.forEach((post) => {
+      var cardDiv = document.createElement("div");
+      cardDiv.className = "card mt-2";
+  
+      var cardBodyDiv = document.createElement("div");
+      cardBodyDiv.className = "card-body";
+  
+      var usernameElement = document.createElement("h4");
+      usernameElement.className = "card-subtitle mb-2";
+      usernameElement.innerText = post.username;
+  
+      var textElement = document.createElement("p");
+      textElement.className = "card-text text-secondary";
+      textElement.innerText = post.text;
+  
+      var iconElement = document.createElement('img');
+      iconElement.src = "../pictures/mind-control.png";
+      iconElement.alt = "user Profile";
+      iconElement.style.width = "30px";
+  
+      // Add a click event to the icon
+      iconElement.addEventListener("click", function() {
+          window.location.href = "../profile.html";
+      });
+  
+      cardBodyDiv.appendChild(usernameElement);
+      cardBodyDiv.appendChild(textElement);
+      cardBodyDiv.appendChild(iconElement);
+  
+      cardDiv.appendChild(cardBodyDiv);
+      postsContainer.appendChild(cardDiv);
+    });
+  }
+  

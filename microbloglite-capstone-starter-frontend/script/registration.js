@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     registrationForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const formData = new FormData(registrationForm);
+        const formData = new FormData(document.getElementById("registrationForm"));
+
         const userData = {
             username: formData.get("username"),
             fullName: formData.get("fullName"),
