@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     logoutButton.addEventListener("click", () => {
         authService.logout();
     });
-});
+
 
 var postForm = document.getElementById("postForm");
 postForm.addEventListener("submit", function(event) {
