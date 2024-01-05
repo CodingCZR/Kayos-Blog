@@ -38,6 +38,25 @@ class PostService extends ServicesBase
             body: JSON.stringify(post),
         };
 
+        return fetch(this.apiBaseUrl, options)
+        .then(response => response.json())
+        .then(data => {
+            //refresh the page
+            location.reload();
+        });
+    }
+    
+// function for profilepost.js, this logic is for the postForm in the profile.html
+    createprofilePost(post) {
+        const options = {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(post),
+        };
+
 
         return fetch(this.apiBaseUrl, options)
             .then(response => {
@@ -52,5 +71,6 @@ class PostService extends ServicesBase
             .catch(error => {
                 console.error("Error creating post:", error);
             });
+        
         }
     }
