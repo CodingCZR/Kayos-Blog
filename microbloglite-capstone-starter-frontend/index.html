@@ -105,6 +105,22 @@
       button:hover {
           background-color: #6f7581;
       }
+
+      @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px) rotate(-5deg); }
+      75% { transform: translateX(5px) rotate(5deg); }
+      100% { transform: translateX(0); }
+    }
+
+     .shake:hover {
+      animation: shake 0.2s infinite;
+        }
+
+    li {
+      list-style-type: square;
+      font-size: larger;
+    }
     </style>
 </head>
 <body>
